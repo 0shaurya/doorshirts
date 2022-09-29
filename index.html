@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Door Shirts</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="image/x-icon" href="/imgs/towl.png">
+	<script type="text/javascript" src="script.js" defer></script>
+
+	<meta name = "viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="banner">
+		<div style="width:10px"></div>
+		<a href="/" class="homeLink"><h5>doorshirts.com</h5></a>
+		<div class="firstDiv"></div>
+		<a href="#" class="menuBarLink">ORDER</a>
+		<a href="https://drive.google.com/drive/folders/1TEHS-UQb6isQQGd5N5F776r-FJrs3hUR?usp=sharing" class="menuBarLink">CATALOG</a>
+	</div>
+
+	<div class="main">
+		<div class="left">
+			<div class="one">
+				<label for="name">1. What is your name?</label>
+				<input name="name" id="name" placeholder="Ex: Kelly Moller">
+			</div>
+			<div class="two">
+				<label for="size">2. What size shirt?</label>
+				<div><input type="radio" name="size" value="S"   id="S"><label   for="S">S</label></div>
+				<div><input type="radio" name="size" value="M"   id="M"><label   for="M">M</label></div>
+				<div><input type="radio" name="size" value="L"   id="L"><label   for="L">L</label></div>
+				<div><input type="radio" name="size" value="XL"  id="XL"><label  for="XL">XL</label></div>
+				<div><input type="radio" name="size" value="XXL" id="XXL"><label for="XXL">XXL</label></div>
+			</div>
+			<div class="three">
+				<label for="image" style="text-align:left;">3. What image? View all pictures <a href="https://drive.google.com/drive/folders/1TEHS-UQb6isQQGd5N5F776r-FJrs3hUR?usp=sharing">here</a></label>
+				<input name="image" id="image" placeholder="Ex: theobald.png">
+			</div>
+		</div>
+		<div class="center">
+			
+		</div>
+		<div class="right">
+			<div class="four">
+				<label for="caption">4. Any caption? (optional)</label>
+				<input name="caption" id="caption">
+			</div>
+			<div class="five" style="z-index: 400;position: relative;">
+				<label for="payment">5. Payment ($15)</label>
+				<div><input type="radio" name="payment" value="Venmo" id="Venmo"><label>Venmo</label></div>
+				<div id="VenmoSelected">
+					<img src="imgs/venmo.png"
+					style="width:150%;
+					height:auto;
+					border-radius:10px;
+					border:1px solid rgb(22, 22, 22);
+					box-shadow: 10px 10px 5px rgb(150, 150, 150);">
+				</div>
+				<div style="z-index:400;"><input type="radio" name="payment" value="Cash"  id="Cash" ><label>Cash</label></div>
+				<div id="CashSelected"><p style="line-height:26px">Pay Shaurya Sehgal, Benjamin Wiggenhorn, or Henry Wang $15 please 🤑🤑🤑💸💰</p></div>
+				<script src="venmo.js"></script>
+			</div>
+			<div class="six">
+				<form action="https://postmail.invotes.com/send" method="post" id="email_form">
+
+				    <input id="subject" type="text" name="subject" value="Door Shirt Order by (name)" style="display:none;"/>
+				    <textarea id="message" name="text" style="display:none;"></textarea>
+				    
+				    <!-- Loads script for setting email parameters -->
+				    <script type="text/javascript" src="order.js"></script>
+
+				    <input type="hidden" name="access_token" value="wgg101215hcwfal7photz3dv" />
+				      <!-- return urls can be fully qualified -OR- start with / for root relative -OR- start with . for url relative --> 
+				    <input type="hidden" name="success_url" value="/order_placed.html"/>
+				    <input type="hidden" name="error_url" value="/order_error.html"/>
+				   
+				    <input id="submit_form" type="submit" value="Order"/>
+				</form>
+				     
+				<script>
+				    var submitButton = document.getElementById("submit_form");
+				    var form = document.getElementById("email_form");
+
+				    if (document.getElementById("S").checked == false &&
+				    	document.getElementById("M").checked == false &&
+				    	document.getElementById("L").checked == false &&
+				    	document.getElementById("XL").checked == false &&
+				    	document.getElementById("XXL").checked == false) {
+				    	size = "No size selected"
+				    }
+
+				    if (document.getElementById("S").checked == true) {
+				    	var size = "S"
+				    } else if (document.getElementById("M").checked == true) {
+				    	var size = "M"
+				    } else if (document.getElementById("L").checked == true) {
+				    	var size = "L"
+				    } else if (document.getElementById("XL").checked == true) {
+				    	var size = "XL"
+				    } else if (document.getElementById("XXL").checked == true) {
+				    	var size = "XXL"
+				    }
+
+				    form.addEventListener("submit", function (e) {
+				        setTimeout(function() {
+				        	document.getElementById("subject").value = "Order by " + document.getElementById("name").value;
+				        	document.getElementById("message").value = "New Door Shirt Order by " + document.getElementById("name").value + "\r\n\r\n" + "Size: " + size + "\r\n" + "Image: " + document.getElementById("image").value + "\r\n" + "Caption: " + document.getElementById("caption").value;
+				            submitButton.value = "Processing...";
+				            submitButton.disabled = true;
+				        }, 1);
+				    });
+				</script> 
+			</div>
+		</div>
+	</div>
+	<div class="images">
+	<div class="theopiss"></div>
+	<div class="theoup"></div>
+	</div>
+</body>
+</html>
